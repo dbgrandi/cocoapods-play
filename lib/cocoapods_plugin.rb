@@ -1,1 +1,1 @@
-require 'pod/command/spec/play'
+require 'pod/command/play'
