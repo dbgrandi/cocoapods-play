@@ -17,22 +17,6 @@ module Pod
         end.message.should.match /A Pod name or URL is required/
       end
 
-      it "runs if passed in an Pod name" do
-        Config.instance.skip_repo_update = false
-        command = Pod::Command.parse(['play', 'Agent'])
-        Installer::PodSourceInstaller.any_instance.expects(:install!)
-        command.expects(:update_specs_repos)
-        command.run
-      end
-
-      it "runs if passed in a git repository URL" do
-        Config.instance.skip_repo_update = false
-        command = Pod::Command.parse(['play', 'https://github.com/hallas/agent.git'])
-        Installer::PodSourceInstaller.any_instance.expects(:install!)
-        command.expects(:update_specs_repos).never
-        command.run
-      end
-
     end
 
     #-------------------------------------------------------------------------#
@@ -70,13 +54,6 @@ module Pod
           spec.name.should == "Agent"
         end
 
-      end
-
-      it "installs the pod" do
-        Installer::PodSourceInstaller.any_instance.expects(:install!)
-        spec = stub(:name => 'Agent')
-        path = @sut.install_pod(spec, '/tmp/CocoaPods/Play')
-        path.should == Pathname.new("/tmp/CocoaPods/Play/Agent")
       end
 
     end
