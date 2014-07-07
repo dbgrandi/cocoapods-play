@@ -2,6 +2,10 @@
 
 Asks politely if `PODNAME` can come out and play by creating a playground.
 
+Release Note from Apple:
+
+ > Playgrounds are not currently sandboxed. They run with the full permissions of the logged in user. Care should be taken before opening playgrounds obtained from others. Before opening the playground you can inspect the code in a playground by looking in `.swift` files inside the playground wrapper. Control click the playground in Finder and choose `Show Package Contents` to see the contents of that playground. (16773467)!
+
 ## What's the deal?
 
 I want this to work, but Swift is young and there are things preventing us from using third party
